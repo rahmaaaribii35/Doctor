@@ -1,3 +1,15 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.active hr {
+  @apply block;
+}
+
+button {
+  @apply transition duration-300 ease-in-out;
+}
+
+ul li {
+  @apply transition-colors duration-200;
+}
