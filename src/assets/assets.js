@@ -27,8 +27,10 @@ import doc13 from './doc13.png'
 import doc14 from './doc14.png'
 import doc15 from './doc15.png'
 
+import appointment_img from './appointment_img.png'
 
-export const assets = { logo, myProfile, dropdown, ellipse, banner_doctor };
+
+export const assets = { logo, myProfile, dropdown, ellipse, banner_doctor , appointment_img };
 
 export const specialityData = [
   { 
