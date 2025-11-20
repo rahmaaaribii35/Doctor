@@ -29,8 +29,10 @@ import doc15 from './doc15.png'
 
 import appointment_img from './appointment_img.png'
 
+import verifiedIcon from './verified_icon.svg'
+import infoIcon from './info_icon.svg'
 
-export const assets = { logo, myProfile, dropdown, ellipse, banner_doctor , appointment_img };
+export const assets = { logo, myProfile, dropdown, ellipse, banner_doctor , appointment_img , verifiedIcon , infoIcon};
 
 export const specialityData = [
   { 
