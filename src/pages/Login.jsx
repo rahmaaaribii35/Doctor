@@ -37,7 +37,7 @@ const Login = () => {
     } else {
       const foundUser = users.find(u => u.email === email && u.password === password)
       if (foundUser) {
-        alert(`Bienvenue ${foundUser.userType}`)
+        
         switch(foundUser.userType) {
           case 'patient':
             navigate('/patient')
@@ -117,7 +117,7 @@ const Login = () => {
         </div>
         <button
           type="submit"
-          onClick={onSubmitHandler}
+          
           className='bg-primary text-white w-full py-2 rounded-md text-base'>
           {state === 'Sign Up' ? "Create Account" : "Login"}
         </button>

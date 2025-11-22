@@ -10,10 +10,13 @@ import Contact from './pages/Contact';
 import MyProfile from './pages/MyProfile'
 import MyAppointements from './pages/Myappointements'
 import Navbar from './components/Navbar'
+
 import HomeDoctor from './pages/Doctor/HomeDoctor'
 import HomePatient from './pages/HomePatient'
 import HomeSecretary from './pages/HomeSecretary'
 import Admin from './pages/Admin'
+import Footer from './components/Footer'
+
 
 function App() {
   
@@ -36,7 +39,9 @@ function App() {
         <Route path='/my-appointments' element={<MyAppointements />} />
         <Route path='/my-appointments/:doctorId' element={<MyAppointements />} />
       </Routes>
+      <Footer/>
     </div>
+    
   )
 }
 
