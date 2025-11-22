@@ -1,5 +1,6 @@
 import { createContext } from "react";
 import { doctors } from "../assets/assets"; // Njibou doctors men fichier assets (data elli bech n'partagouha)
+import { patients } from "../assets2/assets2"; // Njibou patients men fichier assets2
 
 
 // Naamlou context yeli houwa i3awedh props besh isaheli l'accès lel data fil app kamla
@@ -15,6 +16,7 @@ const AppContextProvider = ({ children }) => {
     // Hne nhottou el data elli 7achetna n'partagouha men assets.js
   const value = {
     doctors,
+    patients,
   };
 
   // Hne n7ottou value bch kol composant fi west AppContextProvider . inajem ya9ra el data direct b useContext(AppContext)

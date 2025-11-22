@@ -1,4 +1,4 @@
-import { Search, List, Grid3x3 } from 'lucide-react'
+import { Search, List, Grid3x3, Calendar } from 'lucide-react'
 
 function Controls({ viewMode, setViewMode, selectedCount, totalPatients }) {
   return (
@@ -8,17 +8,26 @@ function Controls({ viewMode, setViewMode, selectedCount, totalPatients }) {
           <button
             onClick={() => setViewMode('list')}
             className={`p-2 rounded ${viewMode === 'list' ? 'bg-blue-600 text-white' : 'text-gray-600'}`}
+            title="Liste"
           >
             <List className="w-5 h-5" />
           </button>
           <button
             onClick={() => setViewMode('grid')}
             className={`p-2 rounded ${viewMode === 'grid' ? 'bg-blue-600 text-white' : 'text-gray-600'}`}
+            title="Grille"
           >
             <Grid3x3 className="w-5 h-5" />
           </button>
+          <button
+            onClick={() => setViewMode('calendar')}
+            className={`p-2 rounded ${viewMode === 'calendar' ? 'bg-blue-600 text-white' : 'text-gray-600'}`}
+            title="Calendrier"
+          >
+            <Calendar className="w-5 h-5" />
+          </button>
         </div>
-        {selectedCount > 0 && (
+        {selectedCount > 0 && viewMode === 'list' && (
           <div className="flex items-center gap-2">
             <span className="text-gray-700 font-medium">Selected {selectedCount}</span>
             <select className="border border-gray-300 rounded-lg px-3 py-1.5 text-gray-700 bg-white">
@@ -36,9 +45,11 @@ function Controls({ viewMode, setViewMode, selectedCount, totalPatients }) {
             className="pl-10 pr-4 py-2 border border-gray-300 rounded-lg w-64 focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
         </div>
-        <div className="text-gray-600">
-          Total patients: <span className="font-semibold">{totalPatients}</span>
-        </div>
+        {viewMode === 'list' && (
+          <div className="text-gray-600">
+            Total patients: <span className="font-semibold">{totalPatients}</span>
+          </div>
+        )}
       </div>
     </div>
   )
