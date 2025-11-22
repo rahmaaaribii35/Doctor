@@ -1,41 +1,47 @@
 import React, { useState } from 'react';
 import { Calendar as CalendarIcon, Clock, User, FileText } from 'lucide-react';
 
+// Hedha composant mta3 calendrier mta3 rendez-vous
+// Yaffichi kol rendez-vous w ykoun fih filtres bch tfilter bina jey wala kamel
 const AppointmentsCalendar = ({ appointments = [] }) => {
+  // State mta3 date elli m7taret (default: lyoum)
   const [selectedDate, setSelectedDate] = useState(new Date().toISOString().split('T')[0]);
-  const [viewMode, setViewMode] = useState('upcoming'); // 'upcoming', 'completed', 'all'
+  
+  // State mta3 mode affichage: 'upcoming' (jey), 'completed' (kamel), wala 'all' (kol chay)
+  const [viewMode, setViewMode] = useState('upcoming');
 
-  // Filtrer les rendez-vous selon le mode
+  // Filter rendez-vous selon mode elli m7tar (jey, kamel, wala kol chay)
   const filteredAppointments = appointments.filter(apt => {
-    if (viewMode === 'upcoming') return apt.status === 'upcoming';
-    if (viewMode === 'completed') return apt.status === 'completed';
-    return true;
+    if (viewMode === 'upcoming') return apt.status === 'upcoming'; // Ken jey, kharej ken jey
+    if (viewMode === 'completed') return apt.status === 'completed'; // Ken kamel, kharej ken kamel
+    return true; // Ken 'all', kharej kol chay
   });
 
-  // Grouper les rendez-vous par date
+  // Group rendez-vous b date (kol date fiha rendez-vous mte3ha)
   const appointmentsByDate = filteredAppointments.reduce((acc, apt) => {
     if (!acc[apt.date]) {
-      acc[apt.date] = [];
+      acc[apt.date] = []; // Ken date mawjouda, a3mel array jdid
     }
-    acc[apt.date].push(apt);
+    acc[apt.date].push(apt); // Zid rendez-vous f array mta3 date mte3ah 
     return acc;
   }, {});
 
-  // Trier les dates
+  // Sort dates (tarti7 dates bch ywalllou men lgdim lel jdid)
   const sortedDates = Object.keys(appointmentsByDate).sort();
 
-  // Obtenir les rendez-vous du jour sélectionné
+  // Kharej rendez-vous mta3 date elli m7taret
   const selectedDayAppointments = appointmentsByDate[selectedDate] || [];
 
-  // Obtenir la date actuelle
+  // Kharej date mta3 lyoum
   const today = new Date().toISOString().split('T')[0];
 
-  // Compter les rendez-vous
+  // 7seb gaddech rendez-vous jey w kamel
   const upcomingCount = appointments.filter(apt => apt.status === 'upcoming').length;
   const completedCount = appointments.filter(apt => apt.status === 'completed').length;
 
   return (
     <div className="bg-white rounded-xl shadow-sm p-6">
+      {/* Titre mta3 calendrier */}
       <div className="flex items-center justify-between mb-6">
         <h2 className="text-2xl font-semibold text-gray-900 flex items-center gap-2">
           <CalendarIcon className="w-6 h-6 text-blue-600" />
@@ -43,42 +49,42 @@ const AppointmentsCalendar = ({ appointments = [] }) => {
         </h2>
       </div>
 
-      {/* Filtres */}
+      {/* Boutons filtres: Tous, À venir, Terminés */}
       <div className="flex gap-4 mb-6">
         <button
-          onClick={() => setViewMode('all')}
+          onClick={() => setViewMode('all')} // Ken t7ot 'all', affichi kol chay
           className={`px-4 py-2 rounded-lg font-medium transition-colors ${
             viewMode === 'all'
-              ? 'bg-blue-600 text-white'
-              : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+              ? 'bg-blue-600 text-white' // Ken active, 7ot couleur bleue
+              : 'bg-gray-100 text-gray-700 hover:bg-gray-200' // Ken mch active, couleur gris
           }`}
         >
-          Tous ({appointments.length})
+          Tous ({appointments.length}) {/* gaddech rendez-vous kolhom */}
         </button>
         <button
-          onClick={() => setViewMode('upcoming')}
+          onClick={() => setViewMode('upcoming')} // Filter ken jey
           className={`px-4 py-2 rounded-lg font-medium transition-colors ${
             viewMode === 'upcoming'
               ? 'bg-blue-600 text-white'
               : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
           }`}
         >
-          À venir ({upcomingCount})
+          À venir ({upcomingCount}) {/* gaddech jey */}
         </button>
         <button
-          onClick={() => setViewMode('completed')}
+          onClick={() => setViewMode('completed')} // Filter ken kamel
           className={`px-4 py-2 rounded-lg font-medium transition-colors ${
             viewMode === 'completed'
               ? 'bg-blue-600 text-white'
               : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
           }`}
         >
-          Terminés ({completedCount})
+          Terminés ({completedCount}) {/* gaddech kamel */}
         </button>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        {/* Liste des rendez-vous par date */}
+        {/* Partie gauche: Liste rendez-vous groupés b date */}
         <div className="lg:col-span-2">
           <h3 className="text-lg font-semibold text-gray-900 mb-4">Rendez-vous par date</h3>
           <div className="space-y-4 max-h-[600px] overflow-y-auto">
@@ -86,37 +92,42 @@ const AppointmentsCalendar = ({ appointments = [] }) => {
               <p className="text-gray-500 text-center py-8">Aucun rendez-vous trouvé.</p>
             ) : (
               sortedDates.map(date => {
-                const dayAppointments = appointmentsByDate[date];
-                const isPast = date < today;
-                const isToday = date === today;
+                const dayAppointments = appointmentsByDate[date]; // Rendez-vous mta3 date hedhika
+                const isPast = date < today; // Ken date gdima (gbal lyoum)
+                const isToday = date === today; // Ken date = lyoum
 
                 return (
                   <div key={date} className="border border-gray-200 rounded-lg p-4">
+                    {/* Titre date */}
                     <div className="flex items-center justify-between mb-3">
                       <h4 className={`font-semibold ${
                         isToday ? 'text-blue-600' : isPast ? 'text-gray-500' : 'text-gray-900'
                       }`}>
+                        {/* Affichi date b format français */}
                         {new Date(date).toLocaleDateString('fr-FR', {
                           weekday: 'long',
                           year: 'numeric',
                           month: 'long',
                           day: 'numeric'
                         })}
+                        {/* Ken lyoum, zid badge "Aujourd'hui" */}
                         {isToday && <span className="ml-2 text-xs bg-blue-100 text-blue-600 px-2 py-1 rounded">Aujourd'hui</span>}
                       </h4>
                     </div>
+                    {/* Liste rendez-vous mta3 date hedhika */}
                     <div className="space-y-3">
                       {dayAppointments.map(apt => (
                         <div
                           key={apt.id}
                           className={`p-3 rounded-lg border-l-4 ${
                             apt.status === 'completed'
-                              ? 'bg-gray-50 border-gray-400'
-                              : 'bg-blue-50 border-blue-500'
+                              ? 'bg-gray-50 border-gray-400' // Ken kamel, couleur grise
+                              : 'bg-blue-50 border-blue-500' // Ken jey, couleur bleue
                           }`}
                         >
                           <div className="flex items-start justify-between">
                             <div className="flex-1">
+                              {/* Heure w statut */}
                               <div className="flex items-center gap-2 mb-1">
                                 <Clock className="w-4 h-4 text-gray-600" />
                                 <span className="font-medium text-gray-900">{apt.time}</span>
@@ -128,16 +139,20 @@ const AppointmentsCalendar = ({ appointments = [] }) => {
                                   {apt.status === 'completed' ? 'Terminé' : 'À venir'}
                                 </span>
                               </div>
+                              {/* Ism patient */}
                               <div className="flex items-center gap-2 mb-1">
                                 <User className="w-4 h-4 text-gray-600" />
                                 <span className="text-gray-900 font-medium">{apt.patientName}</span>
                               </div>
+                              {/* Ism docteur */}
                               <div className="text-sm text-gray-600 mb-1">
                                 <span className="font-medium">Docteur:</span> {apt.doctorName}
                               </div>
+                              {/* Type rendez-vous */}
                               <div className="text-sm text-gray-600 mb-1">
                                 <span className="font-medium">Type:</span> {apt.type}
                               </div>
+                              {/* Notes ken mawjouda */}
                               {apt.notes && (
                                 <div className="flex items-start gap-2 mt-2">
                                   <FileText className="w-4 h-4 text-gray-600 mt-0.5" />
@@ -156,17 +171,19 @@ const AppointmentsCalendar = ({ appointments = [] }) => {
           </div>
         </div>
 
-        {/* Calendrier mensuel */}
+        {/* Partie droite: Calendrier bch t5tar date */}
         <div className="lg:col-span-1">
           <h3 className="text-lg font-semibold text-gray-900 mb-4">Sélectionner une date</h3>
           <div className="border border-gray-200 rounded-lg p-4">
+            {/* Input date picker */}
             <input
               type="date"
               value={selectedDate}
-              onChange={(e) => setSelectedDate(e.target.value)}
+              onChange={(e) => setSelectedDate(e.target.value)} // Ken t5tar date, 7awwel selectedDate
               className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent mb-4"
             />
             
+            {/* Affichi rendez-vous mta3 date elli m5taretha */}
             {selectedDayAppointments.length > 0 ? (
               <div>
                 <h4 className="font-semibold text-gray-900 mb-3">

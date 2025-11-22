@@ -1,14 +1,17 @@
+// Hedha fichier mta3 données mta3 rendez-vous (appointments)
+// Kol rendez-vous fih: id, patient, docteur, date, heure, statut, type, w notes
+
 export const appointments = [
   {
-    id: 'apt1',
-    patientId: 'pat1',
-    patientName: 'John Miller',
-    doctorName: 'Dr. Sarah Johnson',
-    date: '2024-12-20',
-    time: '10:00',
-    status: 'upcoming', // 'upcoming' ou 'completed'
-    type: 'Consultation',
-    notes: 'Routine checkup'
+    id: 'apt1', // ID unique mta3 rendez-vous
+    patientId: 'pat1', // ID mta3 patient
+    patientName: 'John Miller', // Ism patient
+    doctorName: 'Dr. Sarah Johnson', // Ism docteur
+    date: '2024-12-20', // Date mta3 rendez-vous
+    time: '10:00', // Heure mta3 rendez-vous
+    status: 'upcoming', // Statut: 'upcoming' (jey) wala 'completed' (kamel)
+    type: 'Consultation', // Type mta3 rendez-vous (Consultation, Follow-up, Examination, etc.)
+    notes: 'Routine checkup' // Notes wala commentaires
   },
   {
     id: 'apt2',
