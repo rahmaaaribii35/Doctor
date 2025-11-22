@@ -1,12 +1,12 @@
 import { useState } from 'react'
 import Sidebar from '../components/Sidebar'
-import Header from '../components/Header'
 import Tabs from '../components/Tabs'
 import Controls from '../components/Controls'
 import PatientTable from '../components/PatientTable'
 import Legend from '../components/Legend'
 import { patients } from '../data/patientsData'
 import { getStatusColor } from '../utils/statusUtils'
+import Headerlistepatient from '../components/Headerlistepatient'
 
 function ListPatients() {
   const [selectedPatients, setSelectedPatients] = useState(['kate-miller', 'john-crow'])
@@ -26,7 +26,7 @@ function ListPatients() {
       <Sidebar />
 
       <div className="flex-1 flex flex-col">
-        <Header />
+        <Headerlistepatient />
         <Tabs activeTab={activeTab} setActiveTab={setActiveTab} />
 
         <div className="flex-1 bg-white px-8 py-6 overflow-auto">
