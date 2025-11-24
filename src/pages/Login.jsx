@@ -23,7 +23,7 @@ const Login = () => {
       console.log(`Inscription en tant que ${userType}`)
       switch(userType) {
         case 'patient':
-          navigate('/patient')
+          navigate('/')
           break
         case 'doctor':
           navigate('/doctor') 
@@ -40,7 +40,7 @@ const Login = () => {
         alert(`Bienvenue ${foundUser.userType}`)
         switch(foundUser.userType) {
           case 'patient':
-            navigate('/patient')
+            navigate('/')
             break
           case 'doctor':
             navigate('/doctor')

@@ -13,7 +13,7 @@ const Navbar = () => {
   return (
     <div className="flex items-center justify-between py-2 px-3 md:px-6 mb-5 border-b border-gray-200 bg-white shadow-sm">
       {/*Logo ta3 site */}
-      <img className="w-28 cursor-pointer" src={logo} alt="Logo" />
+      <img onClick={() => navigate('/')} className="w-28 cursor-pointer" src={logo} alt="Logo" />
 
       {/*Menu ta3 navigation*/}
       <ul className="hidden md:flex items-center gap-8 font-medium text-gray-700 text-sm">
