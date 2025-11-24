@@ -29,19 +29,8 @@ export const patients = [
             line2: 'Ring Road, London'
         }
     },
-    {
-        _id: 'pat2',
-        name: 'Emma Johnson',
-        image: doc2,
-        age: 27,
-        gender: 'Female',
-        medicalHistory: 'Allergic to penicillin.',
-        phone: '+44 987 654 321',
-        address: {
-            line1: '22nd Cross, Richmond',
-            line2: 'Circle Road, London'
-        }
-    },
+
+
     {
         _id: 'pat3',
         name: 'Michael Brown',
@@ -119,19 +108,8 @@ export const patients = [
             line1: 'Rose Street',
             line2: 'East Park, London'
         }
-    },
-    {
-        _id: 'pat9',
-        name: 'James Walker',
-        image: doc9,
-        age: 38,
-        gender: 'Male',
-        medicalHistory: 'No major medical issues.',
-        phone: '+44 222 333 444',
-        address: {
-            line1: 'Lake Drive',
-            line2: 'West End, London'
-        }
+
+
     },
     {
         _id: 'pat10',

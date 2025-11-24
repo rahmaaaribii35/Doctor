@@ -1,19 +1,21 @@
 import { useState } from 'react'
-import Sidebar from '../components/Sidebar'
 import Tabs from '../components/Tabs'
 import Controls from '../components/Controls'
 import PatientTable from '../components/PatientTable'
 import Legend from '../components/Legend'
-import AppointmentsCalendar from '../components/AppointmentsCalendar' 
+import AppointmentsCalendar from '../components/AppointmentsCalendar'
 import { patients } from '../data/patientsData'
 import { appointments } from '../data/appointmentsData'
 import { getStatusColor } from '../utils/statusUtils'
 import Headerlistepatient from '../components/Headerlistepatient'
 
+
+
+
 function ListPatients() {
   // State mta3 patients elli m5tarin (selected)
   const [selectedPatients, setSelectedPatients] = useState(['kate-miller', 'john-crow'])
-  
+
   // State mta3 mode affichage: 'list' (liste), 'grid' (grille), wala 'calendar' (calendrier)
   const [viewMode, setViewMode] = useState('list')
 
@@ -28,7 +30,7 @@ function ListPatients() {
 
   return (
     <div className="flex h-screen bg-blue-50">
-      <Sidebar /> {/* Sidebar men liser*/}
+      {/* Sidebar men liser*/}
 
       <div className="flex-1 flex flex-col">
         <Headerlistepatient /> {/* Header men fou9 */}

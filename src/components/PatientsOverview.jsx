@@ -1,7 +1,6 @@
 import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { AppContext } from "../context/AppContext";
-import Sidebar from './Sidebar';
 import Headerlistepatient from './Headerlistepatient';
 import Tabs from './Tabs';
 
@@ -12,7 +11,7 @@ const PatientsOverview = () => {
 
     return (
         <div className="flex h-screen bg-blue-50">
-            <Sidebar /> {/* Sidebar men liser*/}
+            {/* Sidebar men liser*/}
 
             <div className="flex-1 flex flex-col">
                 <Headerlistepatient /> {/* Header men fou9 */}

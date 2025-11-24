@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { AppContext } from '../context/AppContext';
-import Sidebar from '../components/Sidebar';
+
 import Headerlistepatient from '../components/Headerlistepatient';
 import Tabs from '../components/Tabs';
 
@@ -9,9 +9,9 @@ const PatientDetail = () => {
     const { patientId } = useParams();
     const navigate = useNavigate();
     const { patients } = useContext(AppContext);
-    
+
     const patient = patients.find(p => p._id === patientId);
-    
+
     const [isEditing, setIsEditing] = useState(false);
     const [patientData, setPatientData] = useState(patient || {});
     const [newNote, setNewNote] = useState({
@@ -25,14 +25,14 @@ const PatientDetail = () => {
     if (!patient) {
         return (
             <div className="flex h-screen bg-blue-50">
-                <Sidebar />
+
                 <div className="flex-1 flex flex-col">
                     <Headerlistepatient />
                     <Tabs />
                     <div className="flex-1 bg-white flex items-center justify-center">
                         <div className="text-center">
                             <h2 className="text-2xl font-bold text-gray-800 mb-4">Patient non trouvé</h2>
-                            <button 
+                            <button
                                 onClick={() => navigate('/patients-overview')}
                                 className="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700"
                             >
@@ -99,7 +99,7 @@ const PatientDetail = () => {
 
     return (
         <div className="flex h-screen bg-blue-50">
-            <Sidebar />
+
 
             <div className="flex-1 flex flex-col">
                 <Headerlistepatient />
@@ -119,11 +119,10 @@ const PatientDetail = () => {
                                 <h1 className="text-3xl font-bold text-gray-900">Détails du Patient</h1>
                                 <button
                                     onClick={() => isEditing ? handleSave() : setIsEditing(true)}
-                                    className={`px-6 py-2 rounded-lg font-medium ${
-                                        isEditing
-                                            ? 'bg-green-600 text-white hover:bg-green-700'
-                                            : 'bg-blue-600 text-white hover:bg-blue-700'
-                                    }`}
+                                    className={`px-6 py-2 rounded-lg font-medium ${isEditing
+                                        ? 'bg-green-600 text-white hover:bg-green-700'
+                                        : 'bg-blue-600 text-white hover:bg-blue-700'
+                                        }`}
                                 >
                                     {isEditing ? 'Enregistrer' : 'Modifier'}
                                 </button>
@@ -247,7 +246,7 @@ const PatientDetail = () => {
                                 {/* Carte Notes Médicales */}
                                 <div className="bg-white rounded-xl shadow-sm p-6">
                                     <h2 className="text-xl font-semibold text-gray-900 mb-4">Notes Médicales</h2>
-                                    
+
                                     {/* Formulaire pour ajouter une note */}
                                     <form onSubmit={handleAddNote} className="mb-6 p-4 bg-gray-50 rounded-lg">
                                         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">

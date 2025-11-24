@@ -1,0 +1,5 @@
+.appointment-day {
+    background-color: #34d399 !important; /* vert Tailwind equivalent 'green-400' */
+    color: white !important;
+    border-radius: 0.5rem !important; /* arrondi */
+  }
