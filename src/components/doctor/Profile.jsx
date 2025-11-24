@@ -6,7 +6,7 @@ const Profile = ({ doctor }) => {
   const [editMode, setEditMode] = useState(false);
   //el form li khdhitou ml prop doctor bch nbadal fih(copie ml donnees lmwjoudin deja)
   const [formDoctor, setFormDoctor] = useState(doctor);
-
+//hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh
   //Fonction pour changer les valeurs
   const handleChange = (e) => { //handlechange hedhi lel input lbsit bch yetbdl valeur mteeou
     const { name, value } = e.target; //njbd valeur li fl input
