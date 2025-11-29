@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect  } from 'react';
 
 const Profile = ({ doctor }) => {
 
@@ -6,7 +6,13 @@ const Profile = ({ doctor }) => {
   const [editMode, setEditMode] = useState(false);
   //el form li khdhitou ml prop doctor bch nbadal fih(copie ml donnees lmwjoudin deja)
   const [formDoctor, setFormDoctor] = useState(doctor);
-//hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh
+  
+   // synchroniser le state formDoctor quand le prop doctor change
+   useEffect(() => {
+    setFormDoctor(doctor);
+    setEditMode(false); // optionnel : quitter le mode édition si on change de docteur
+  }, [doctor]);
+  
   //Fonction pour changer les valeurs
   const handleChange = (e) => { //handlechange hedhi lel input lbsit bch yetbdl valeur mteeou
     const { name, value } = e.target; //njbd valeur li fl input

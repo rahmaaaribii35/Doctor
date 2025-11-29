@@ -4,19 +4,12 @@ import CalendarComponent from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 import './Calendar.css'; // fichier CSS pour les jours colorés
 
-const Calendar = () => {
+const Calendar = ({doctor}) => {
   const [showCalendar, setShowCalendar] = useState(false);
   const [selectedDate, setSelectedDate] = useState(new Date());
 
-  // Rendez-vous exemple (plusieurs dans le mois)
-  const appointments = {
-    "2025-11-05": ["10:00 - Patient A", "11:00 - Patient B", "15:00 - Patient C"],
-    "2025-11-10": ["09:00 - Patient D", "13:00 - Patient E", "16:00 - Patient F"],
-    "2025-11-12": ["10:00 - Patient G", "14:00 - Patient H", "16:30 - Patient I"],
-    "2025-11-15": ["09:30 - Patient J"],
-    "2025-11-20": ["10:00 - Patient K", "12:00 - Patient L"],
-    "2025-11-22": ["08:30 - Patient M", "11:00 - Patient N", "14:00 - Patient O"],
-  };
+  //les rdvyjiw ml doctor selectionné
+  const appointments = doctor?.appointments || {};
 
   // formate la date en "YYYY-MM-DD"
   const formatDate = (date) => date.toISOString().split("T")[0];
